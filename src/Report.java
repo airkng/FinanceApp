@@ -1,17 +1,7 @@
 import java.util.*;
 
 public class Report {
-    /**
-     * Класс Report хранит в себе 2 мапы классов MonthReportGlobalInfo и YearReportGlobalInfo, а также мапу years
-     * В качестве ключа у мап идет год, в качестве значения - соответствующие классы
-     * Данный класс по сути хранит в себе все месячные отчеты и годовой отчет за определенный год
-     * <p>
-     * В методах @setYearReport  и  @setMonthReport в классе FinanceFileReader мы проверяем по введеному ключу существует ли у нас значение в мапе
-     * Если существует, мы сохраняем эти данные в буферный объект @newYear и добавляем к нему новые считанные отчеты,
-     * неважно, месячные или годовые. Далее заносим в соответствующую мапу
-     * <p>
-     * Если не существует, тогда просто добавляем данные о считанном отчете в мапу с ключом inputYear(Введенный год пользователем)
-     */
+
     public static HashMap<Integer, YearReportGlobalInfo> globalInfoYearReportsMap = new HashMap<>();
     public static HashMap<Integer, MonthReportGlobalInfo> globalInfoMonthReportsMap = new HashMap<>();
 

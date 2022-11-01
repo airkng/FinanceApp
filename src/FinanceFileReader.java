@@ -8,10 +8,7 @@ public class FinanceFileReader {
     //Счетчик проведенных дней за проектом: 5
     private Integer inputYear;
     private String relativePath;
-    //Удалил ненужную мапу, сейчас должно стать понятнее
 
-    // По твоему совету убрал листы. Совет супер!
-    // Ниже оставил комменты
 
     private String readFileContentsOrNull(String path) {
         try {
@@ -35,28 +32,7 @@ public class FinanceFileReader {
         }
     }
 
-    /** Логика метода ниже отличается от логики метода @setMonthReportToObjects
-     * Здесь он читает и преобразовывает построчно И отправляет в ОДНУ считанную строчку в
-     * @yearReportGlobalInfo.addYearReport. То есть это строчка, которая по сути содержит
-     * месяц-сумму-указание дохода/расхода идет аж до самого класса @YearReport. Поле месяц
-     * отпадает на уровне класса @YearGlobalInfo, т.к там есть мапа месяц --> класс YearReport,
-     * а поля "сумма" И "указание дохода/расхода" доходят до @YearReport и заносятся в лист Доходов/Расходов
-     * ЗА МЕСЯЦ. Сейчас идем и читаем документацию в класс YearReport.
-     *
-     * В методе же @setMonthReportToObjects считывается ОДНА строчка, проходит проверки,
-     * корректируется (.trim() .replaceAll("\\s+", "") и снова засовывается в другой массив
-     * уже КОРРЕКТНЫХ строк. И только после отправляет в метод @monthReportGlobalInfo.addMonthReport скорректированных
-     * строк. Далее данные в методе @monthReportGlobalInfo.addMonthReport уже сплитуются по запятой.
-     * Еще раз, туда прилетает массив строк типа:
-     * String[] correcMonthReport =
-     * [0] - [Коньки,true,50,2000]
-     * [1] - [Новогодняя ёлка,true,1,100000]
-     * [2] - [Ларёк с кофе,true,3,50000]
-     * ...
-     * Далее сплитуются и построчо идут в метод @addInfo класса MonthReport
-     *
-     * На этом я все, отправляю проект тебе еще раз :)
-     */
+
     private void setYearReportToObjects(String yearFile) {
         YearReportGlobalInfo yearReportGlobalInfo = new YearReportGlobalInfo();
         if(Report.globalInfoYearReportsMap.containsKey(inputYear)) {
